@@ -38,5 +38,26 @@ public class HospedesResource {
   		return ResponseEntity.ok().body( new HospedesDto(hospede));
   		
   	}
+    @RequestMapping(value="/nome/{nome}", method = RequestMethod.GET)
+  	public ResponseEntity<HospedesDto> findByNome(@PathVariable String nome){
+      	Hospedes hospede = service.findByNome(nome);
+      	
+  		return ResponseEntity.ok().body( new HospedesDto(hospede));
+  		
+  	}
+    @RequestMapping(value="/documento/{documento}", method = RequestMethod.GET)
+  	public ResponseEntity<HospedesDto> findByDocumento(@PathVariable String documento){
+      	Hospedes hospede = service.findByDocumento(documento);
+      	
+  		return ResponseEntity.ok().body( new HospedesDto(hospede));
+  		
+  	}
+    @RequestMapping(value="/telefone/{telefone}", method = RequestMethod.GET)
+  	public ResponseEntity<HospedesDto> findByTelefone(@PathVariable String telefone){
+      	Hospedes hospede = service.findByTelefone(telefone);
+      	
+  		return ResponseEntity.ok().body( new HospedesDto(hospede));
+  		
+  	}
 	
 }

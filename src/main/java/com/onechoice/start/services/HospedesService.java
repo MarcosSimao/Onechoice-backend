@@ -27,4 +27,26 @@ public Hospedes findById(Integer id) {
  return hospede.orElseThrow(() -> new ObjectNotfoundException("hospede nao encontrado "));
 	
 }
+public Hospedes findByNome(String nome) {
+
+	
+	Optional<Hospedes> hospede = hos.findByNome(nome);
+	
+	 return hospede.orElseThrow(() -> new ObjectNotfoundException("hospede nao encontrado "));
+}
+
+public Hospedes findByDocumento(String documento) {
+
+	
+	Optional<Hospedes> hospede = hos.findByDocumento(documento);
+	
+	 return hospede.orElseThrow(() -> new ObjectNotfoundException("hospede nao encontrado "));
+}
+public Hospedes findByTelefone(String telefone) {
+
+	
+	Optional<Hospedes> hospede = hos.findByTelefone(telefone);
+	
+	 return hospede.orElseThrow(() -> new ObjectNotfoundException("hospede nao encontrado "));
+}
 }
