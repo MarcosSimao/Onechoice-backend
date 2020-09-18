@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import com.onechoice.start.dto.HospedesDto;
 import com.onechoice.start.entites.Hospedes;
 import com.onechoice.start.repository.HospedesRespository;
 import com.onechoice.start.services.exceptions.ObjectNotfoundException;
@@ -49,4 +50,33 @@ public Hospedes findByTelefone(String telefone) {
 	
 	 return hospede.orElseThrow(() -> new ObjectNotfoundException("hospede nao encontrado "));
 }
+
+public Hospedes insert(Hospedes hospede) {
+	
+		
+	return hos.saveAndFlush(hospede);
+	
+}
+public Hospedes fromDto(HospedesDto dto) {
+	return new Hospedes(dto.getId(),dto.getNome(),dto.getDocumento(),dto.getTelefone());
+	
+}
+
+public void delete(Integer id) {
+	findById(id);
+	hos.deleteById(id);
+}
+public Hospedes update(Hospedes hospede) {
+	
+	Hospedes hospedeUpdate= findById(hospede.getId());
+	configUpdate(hospedeUpdate,hospede);
+	return hos.saveAndFlush(hospedeUpdate);
+	
+}
+public void configUpdate(Hospedes hospedeUpdate,Hospedes hospede) {
+	hospedeUpdate.setNome(hospede.getNome());
+	hospedeUpdate.setDocumento(hospede.getDocumento());
+	hospedeUpdate.setTelefone(hospede.getTelefone());
+}
+
 }

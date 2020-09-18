@@ -15,6 +15,8 @@ public interface HospedesRespository  extends JpaRepository<Hospedes, Integer>{
 	Optional<Hospedes> findByDocumento(String documento);
 
 	Optional<Hospedes> findByTelefone(String telefone);
+
+	
 	
 
 	
