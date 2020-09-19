@@ -109,6 +109,8 @@ public class CheckIn implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 	
 
 }

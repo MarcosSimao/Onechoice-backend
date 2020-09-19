@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,4 +39,40 @@ public class CheckInResource {
 			return ResponseEntity.ok().body(listDto);
 			
 		}
+	 @RequestMapping(value="/{id}", method = RequestMethod.GET)
+	  	public ResponseEntity<CheckInDto> findById(@PathVariable Integer id){
+	      	CheckIn check = serviCheck.findById(id);
+	      	
+	  		return ResponseEntity.ok().body( new CheckInDto(check));
+	  		
+	  	}
+	 @RequestMapping(value="/hospede/{id}", method = RequestMethod.GET)
+	  	public ResponseEntity<CheckInDto> findByHospede(@PathVariable Integer id){
+		 
+	      CheckIn check = serviCheck.findByHospede(id);
+	     return ResponseEntity.ok().body( new CheckInDto(check));
+	  		
+	  	}
+	 @RequestMapping(value="/hospede/nome/{nome}", method = RequestMethod.GET)
+	  	public ResponseEntity<CheckInDto> findByHospede(@PathVariable String nome){
+		 
+	      CheckIn check = serviCheck.findByHospedeNome(nome);
+	      
+	    return ResponseEntity.ok().body( new CheckInDto(check));
+	  		
+	  	}
+	 @RequestMapping(value="/hospede/documento/{documento}", method = RequestMethod.GET)
+	  	public ResponseEntity<CheckInDto> findByHospedeDocumento(@PathVariable String documento){
+		 
+	      CheckIn check = serviCheck.findByHospedeDocumento(documento);
+	return ResponseEntity.ok().body( new CheckInDto(check));
+	  		
+	  	}
+	 @RequestMapping(value="/hospede/telefone/{telefone}", method = RequestMethod.GET)
+	  	public ResponseEntity<CheckInDto> findByHospedeTelefone(@PathVariable String telefone){
+		 
+	      CheckIn check = serviCheck.findByHospedeTelefone(telefone);
+	      return ResponseEntity.ok().body( new CheckInDto(check));
+	  		
+	  	}
 }
