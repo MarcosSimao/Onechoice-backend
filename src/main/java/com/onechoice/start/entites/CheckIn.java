@@ -63,7 +63,7 @@ public class CheckIn implements Serializable {
 		this.dataSaida = dataSaida;
 	}
 
-	public boolean isAdicionarVeiculos() {
+	public boolean getAdicionarVeiculos() {
 		return adicionarVeiculos;
 	}
 

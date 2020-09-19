@@ -26,7 +26,7 @@ public CheckInDto(CheckIn check) {
 	this.codigo=check.getCodigo();
 	this.dataEntrada=check.getDataEntrada();
 	this.dataSaida=check.getDataSaida();
-	this.adicionarVeiculos=check.isAdicionarVeiculos();
+	this.adicionarVeiculos=check.getAdicionarVeiculos();
 	this.hospede=check.getHospede();
 	this.setConta(valorApagar(dataEntrada,dataSaida,adicionarVeiculos));
 		
@@ -51,7 +51,7 @@ public CheckInDto(CheckIn check) {
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
 	}
-	public boolean isAdicionarVeiculos() {
+	public boolean getAdicionarVeiculos() {
 		return adicionarVeiculos;
 	}
 	public void setAdicionarVeiculos(boolean adicionarVeiculos) {

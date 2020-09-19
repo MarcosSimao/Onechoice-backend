@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.onechoice.start.dto.CheckInDto;
+import com.onechoice.start.dto.HospedesDto;
 import com.onechoice.start.entites.CheckIn;
 import com.onechoice.start.entites.Hospedes;
 import com.onechoice.start.repository.CheckInRepository;
@@ -97,7 +99,22 @@ public class CheckInService {
 		check.deleteById(id);
 	}
 
+	public CheckIn update(CheckIn check1) {
+		
+		CheckIn checkUpdate= findById(check1.getCodigo());
+		configUpdate(checkUpdate,check1);
+		return check.saveAndFlush(checkUpdate);
+		
+	}
+	public void configUpdate(CheckIn hospedeUpdate,CheckIn hospede) {
+		
+		hospedeUpdate.setDataSaida(hospede.getDataSaida());
+		hospedeUpdate.setAdicionarVeiculos(hospede.getAdicionarVeiculos());
+	}
 	
-	
+	public CheckIn fromDto(CheckInDto dto) {
+		return new CheckIn(dto.getCodigo(),dto.getDataEntrada(),dto.getDataSaida(),dto.getAdicionarVeiculos(),dto.getHospede());
+		
+	}
 
 }

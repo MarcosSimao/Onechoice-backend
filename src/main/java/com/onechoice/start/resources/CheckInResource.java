@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -79,6 +80,14 @@ public class CheckInResource {
 		public ResponseEntity<Void>delete(@PathVariable Integer id){
 		 serviCheck.delete(id);
 			
+			return ResponseEntity.noContent().build();
+			}
+	 
+	 @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+		public ResponseEntity<Void> update(@RequestBody CheckInDto dto,@PathVariable Integer id){
+			CheckIn chec = serviCheck.fromDto(dto);
+			chec.setId(id);
+			chec= serviCheck.update(chec);
 			return ResponseEntity.noContent().build();
 			}
 }
