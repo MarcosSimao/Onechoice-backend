@@ -489,4 +489,103 @@ GET http://localhost:8080/checkin/23
 }
 
 ````
+Agora vamos Usar o verbo DELETE  para deletar um checkIN:
+
+````
+GET http://localhost:8080/checkin
+
+[
+    {
+        "codigo": 19,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 16,
+            "nome": "leticia andrade",
+            "documento": "222222",
+            "telefone": "908466378"
+        }
+    },
+    {
+        "codigo": 17,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-13T12:20:56.000+00:00",
+        "adicionarVeiculos": true,
+        "conta": 1285.0,
+        "hospede": {
+            "id": 14,
+            "nome": "marcos andrade",
+            "documento": "999999",
+            "telefone": "000000000"
+        }
+    },
+    {
+        "codigo": 21,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 20,
+            "nome": "goku severino",
+            "documento": "343434",
+            "telefone": "564738493"
+        }
+    },
+    {
+        "codigo": 23,
+        "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+        "dataSaida": "2001-07-31T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1560.0,
+        "hospede": {
+            "id": 22,
+            "nome": "Sandra Paula",
+            "documento": "234564",
+            "telefone": "8199344444"
+        }
+    }
+]
+ DELETE  http://localhost:8080/checkin/23
  
+GET  http://localhost:8080/checkin/23
+
+{
+    "timestamp": 1600550802336,
+    "status": 404,
+    "error": "objeto nao encontrado",
+    "message": "esse Checkin nao existe ",
+    "path": "/checkin/23"
+}
+ 
+ 
+
+````
+Agora vamos deletar o Hospede :
+
+````
+GET http://localhost:8080/hospedes/22
+{
+    "id": 22,
+    "nome": "Sandra Paula",
+    "documento": "234564",
+    "telefone": "8199344444"
+}
+
+DELETE http://localhost:8080/hospedes/22
+
+GET http://localhost:8080/hospedes/22
+
+{
+    "timestamp": 1600551036743,
+    "status": 404,
+    "error": "objeto nao encontrado",
+    "message": "hospede nao encontrado ",
+    "path": "/hospedes/22"
+}
+
+````
+
+ estes foram os testes ,caso queira testar em sua maquina pode baixar o codigo. Abraco!!!
