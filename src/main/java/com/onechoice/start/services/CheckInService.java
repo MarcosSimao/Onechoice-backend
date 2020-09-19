@@ -111,6 +111,12 @@ public class CheckInService {
 		hospedeUpdate.setDataSaida(hospede.getDataSaida());
 		hospedeUpdate.setAdicionarVeiculos(hospede.getAdicionarVeiculos());
 	}
+	public CheckIn insert(CheckIn hospede) {
+		
+		
+		return check.saveAndFlush(hospede);
+		
+	}
 	
 	public CheckIn fromDto(CheckInDto dto) {
 		return new CheckIn(dto.getCodigo(),dto.getDataEntrada(),dto.getDataSaida(),dto.getAdicionarVeiculos(),dto.getHospede());

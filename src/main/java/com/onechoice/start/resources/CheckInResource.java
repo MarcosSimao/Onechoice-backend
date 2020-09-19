@@ -2,6 +2,7 @@ package com.onechoice.start.resources;
 
 
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.onechoice.start.dto.CheckInDto;
 import com.onechoice.start.dto.HospedesDto;
@@ -89,5 +91,12 @@ public class CheckInResource {
 			chec.setId(id);
 			chec= serviCheck.update(chec);
 			return ResponseEntity.noContent().build();
+			}
+	 @RequestMapping(method=RequestMethod.POST)
+		public ResponseEntity<Void> insert(@RequestBody CheckInDto dto){
+			CheckIn hospede = serviCheck.fromDto(dto);
+		hospede= serviCheck.insert(hospede);
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(hospede.getCodigo()).toUri();
+			return ResponseEntity.created(uri).build();
 			}
 }
