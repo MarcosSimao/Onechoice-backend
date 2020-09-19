@@ -1,11 +1,15 @@
 package com.onechoice.start.entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
 @Entity
 public class Hospedes implements Serializable {
 	
@@ -17,7 +21,10 @@ public class Hospedes implements Serializable {
 	private String nome;
 	private String documento;
 	private String telefone;
+
 	
+	
+
 	public Hospedes() {
 		
 	}
