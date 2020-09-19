@@ -76,4 +76,248 @@ GET http://localhost:8080/hospedes
 ]
 
 ````
+pegando Cliente do Hotel por id:
+
+````
+GET http://localhost:8080/hospedes/15
+
+{
+    "id": 15,
+    "nome": "lucas simao",
+    "documento": "333333",
+    "telefone": "8475649377"
+}
+
+````
+pegando Cliente pelo nome:
+
+````
+GET http://localhost:8080/hospedes/nome/lucas simao
+{
+    "id": 15,
+    "nome": "lucas simao",
+    "documento": "333333",
+    "telefone": "8475649377"
+}
+
+````
+
+pegando cliente pelo Documento:
+
+````
+GET http://localhost:8080/hospedes/documento/333333
+{
+    "id": 15,
+    "nome": "lucas simao",
+    "documento": "333333",
+    "telefone": "8475649377"
+}
+````
+pegando cliente pelo Telefone:
+
+````
+GET http://localhost:8080/hospedes/telefone/8475649377
+
+
+{
+    "id": 15,
+    "nome": "lucas simao",
+    "documento": "333333",
+    "telefone": "8475649377"
+}
+
+o segundo vem o Verbo POST . Inserindo um Hospede:
+````
+
+````
+POST http://localhost:8080/hospedes
+
+{
+    
+    "nome": "Sandra Paula",
+    "documento": "234564",
+    "telefone": "8199344444"
+}
+
+GET http://localhost:8080/hospedes
+
+[
+    {
+        "id": 14,
+        "nome": "marcos andrade",
+        "documento": "999999",
+        "telefone": "8364738993"
+    },
+    {
+        "id": 15,
+        "nome": "lucas simao",
+        "documento": "333333",
+        "telefone": "8475649377"
+    },
+    {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    },
+    {
+        "id": 20,
+        "nome": "goku severino",
+        "documento": "343434",
+        "telefone": "564738493"
+    },
+    {
+        "id": 22,
+        "nome": "Sandra Paula",
+        "documento": "234564",
+        "telefone": "8199344444"
+    }
+],
+   
+]
+
+````
+Agora vamos usar o Verbo PUT
+e vamos alterar o telefone de um Hospede:
+
+````
+GET http://localhost:8080/hospedes/14
+
+{
+        "id": 14,
+        "nome": "marcos andrade",
+        "documento": "999999",
+        "telefone": "8364738993"
+    }
+PUT http://localhost:8080/hospedes/14
+
+{
+    
+    "nome": "marcos andrade",
+    "documento": "999999",
+    "telefone": "000000000"
+}
+
+GET http://localhost:8080/hospedes
+
+[
+    {
+        "id": 15,
+        "nome": "lucas simao",
+        "documento": "333333",
+        "telefone": "8475649377"
+    },
+    {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    },
+    {
+        "id": 20,
+        "nome": "goku severino",
+        "documento": "343434",
+        "telefone": "564738493"
+    },
+    {
+        "id": 22,
+        "nome": "Sandra Paula",
+        "documento": "234564",
+        "telefone": "8199344444"
+    },
+    {
+        "id": 14,
+        "nome": "marcos andrade",
+        "documento": "999999",
+        "telefone": "000000000"
+    }
+]
+
+
+
+````
+Agora vamos Ver quem deu o checkIn . Usando Get para listar todos:
+
+````
+GET http://localhost:8080/checkin
+
+[
+    {
+        "codigo": 19,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 16,
+            "nome": "leticia andrade",
+            "documento": "222222",
+            "telefone": "908466378"
+        }
+    },
+    {
+        "codigo": 17,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-13T12:20:56.000+00:00",
+        "adicionarVeiculos": true,
+        "conta": 1285.0,
+        "hospede": {
+            "id": 14,
+            "nome": "marcos andrade",
+            "documento": "999999",
+            "telefone": "000000000"
+        }
+    },
+    {
+        "codigo": 21,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 20,
+            "nome": "goku severino",
+            "documento": "343434",
+            "telefone": "564738493"
+        }
+    }
+]
+````
+buscando  checkin por id do hospede:
+
+````
+GET http://localhost:8080/checkin/hospede/16
+
+{
+    "codigo": 19,
+    "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+    "dataSaida": "2001-07-12T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    }
+}
+````
+
+buscando checkin por nome do Hospede:
+
+````
+GET http://localhost:8080/clientes/nome/Marcos alecrim
+````
+
+buscando Checkin por documento do hospede:
+
+````
+GET http://localhost:8080/clientes/nome/Marcos alecrim
+````
+
+buscando checkIn por telefone do hospede:
+
+````
+GET http://localhost:8080/clientes/nome/Marcos alecrim
+````
  
