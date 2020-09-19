@@ -91,6 +91,11 @@ public class CheckInService {
 		return null;
 		
 	}
+	
+	public void delete(Integer id) {
+		findById(id);
+		check.deleteById(id);
+	}
 
 	
 	

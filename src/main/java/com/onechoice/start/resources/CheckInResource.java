@@ -75,4 +75,10 @@ public class CheckInResource {
 	      return ResponseEntity.ok().body( new CheckInDto(check));
 	  		
 	  	}
+	 @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+		public ResponseEntity<Void>delete(@PathVariable Integer id){
+		 serviCheck.delete(id);
+			
+			return ResponseEntity.noContent().build();
+			}
 }
