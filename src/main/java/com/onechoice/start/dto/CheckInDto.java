@@ -1,7 +1,11 @@
 package com.onechoice.start.dto;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import com.onechoice.start.entites.CheckIn;
 import com.onechoice.start.entites.Hospedes;
@@ -24,7 +28,7 @@ public CheckInDto(CheckIn check) {
 	this.dataSaida=check.getDataSaida();
 	this.adicionarVeiculos=check.isAdicionarVeiculos();
 	this.hospede=check.getHospede();
-	this.setConta(valorApagar(dataEntrada,dataSaida));
+	this.setConta(valorApagar(dataEntrada,dataSaida,adicionarVeiculos));
 		
 	}
 	
@@ -71,12 +75,119 @@ public CheckInDto(CheckIn check) {
 				+ ", adicionarVeiculos=" + adicionarVeiculos + ", conta=" + conta + ", hospede=" + hospede + "]";
 	}
 	
-	public double valorApagar(Date entrada,Date saida) {
-		return 00;
+	public double valorApagar(Date entrada,Date saida,boolean garagem) {
+		Double valor=00.00;
+		DateTime inicio = new DateTime(entrada);
+		DateTime fim = new DateTime(saida);
+		int resultado = Days.daysBetween(inicio, fim).getDays();
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dataEntrada);
+		int day = cal.get(Calendar.DAY_OF_WEEK);
+		
+		
+		for(int i=1;i<=resultado;i++) {
+			switch (day) {
+			
+			case 1:
+	           valor+=150.00;
+	           if(garagem) {
+	        	   valor+=20.00;  
+	        	   
+	           }
+	           day++;
+				break;
+			case 2:
+				valor+=120.00;
+				 if(garagem) {
+		        	   valor+=15.00;  
+		           }
+				 day++;
+				break;
+			case 3:
+				valor+=120.00;
+				 if(garagem) {
+		        	   valor+=15.00;  
+		           }
+				 day++;
+				break;
+			case 4:
+				valor+=120.00;
+				 if(garagem) {
+		        	   valor+=15.00;  
+		           }
+				 day++;
+				break;
+			case 5:
+				valor+=120.00;
+				 if(garagem) {
+		        	   valor+=15.00;  
+		           }
+				 day++;
+				break;
+			case 6:
+				valor+=120.00;
+				 if(garagem) {
+		        	   valor+=15.00;  
+		           }
+				 day++;
+				break;
+			case 7:
+				 if(garagem) {
+		        	   valor+=20.00;  
+		           }
+				valor+=150.00;
+				day=1;
+				break;
+				
+			}
+			
+			}
+		ultimoDia(day,valor,garagem);
+
+		return valor;
 	}
 	
 	
-	
+	public void ultimoDia(int day,double valor,boolean garagem) {
+		if(day==1) {
+			valor+=150.00;
+			if(garagem) {
+	        	   valor+=20.00;  
+	           }
+		}else if(day==2) {
+			valor+=120.00;
+			 if(garagem) {
+	        	   valor+=15.00;  
+	           }
+		}else if(day==3) {
+			valor+=120.00;
+			 if(garagem) {
+	        	   valor+=15.00;  
+	           }
+		}else if(day==4) {
+			valor+=120.00;
+			 if(garagem) {
+	        	   valor+=15.00;  
+	           }
+		}else if(day==5) {
+			valor+=120.00;
+			 if(garagem) {
+	        	   valor+=15.00;  
+	           }
+		}else if(day==6) {
+			valor+=120.00;
+			 if(garagem) {
+	        	   valor+=15.00;  
+	           }
+		}else if(day==7) {
+			valor+=150.00;
+			
+			if(garagem) {
+	        	   valor+=20.00;  
+	           }
+		}
+	}
 	
 	
 	
