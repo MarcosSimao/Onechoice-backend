@@ -306,18 +306,187 @@ GET http://localhost:8080/checkin/hospede/16
 buscando checkin por nome do Hospede:
 
 ````
-GET http://localhost:8080/clientes/nome/Marcos alecrim
+GET http://localhost:8080/checkin/hospede/nome/leticia andrade
+
+{
+    "codigo": 19,
+    "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+    "dataSaida": "2001-07-12T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    }
+}
 ````
 
 buscando Checkin por documento do hospede:
 
 ````
-GET http://localhost:8080/clientes/nome/Marcos alecrim
+GET http://localhost:8080/checkin/hospede/documento/222222
+
+{
+    "codigo": 19,
+    "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+    "dataSaida": "2001-07-12T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    }
+}
 ````
 
 buscando checkIn por telefone do hospede:
 
 ````
-GET http://localhost:8080/clientes/nome/Marcos alecrim
+GET http://localhost:8080/checkin/hospede/telefone/908466378
+
+{
+    "codigo": 19,
+    "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+    "dataSaida": "2001-07-12T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    }
+}
+````
+
+ agora usaremos o verbo POst para adicionar o Hospede no checkIN.
+ Lembrando que cadastramos Sandra do id 22 no nosso Hotel, ela vai da o checkIn:
+ 
+ ````
+POST http://localhost:8080/checkin
+
+{
+    
+    "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+    "dataSaida": "2001-07-30T12:20:56.000+00:00",
+    "adicionarVeiculos": true,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 22
+        
+    }
+}
+
+GET http://localhost:8080/checkin
+[
+    {
+        "codigo": 19,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 16,
+            "nome": "leticia andrade",
+            "documento": "222222",
+            "telefone": "908466378"
+        }
+    },
+    {
+        "codigo": 17,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-13T12:20:56.000+00:00",
+        "adicionarVeiculos": true,
+        "conta": 1285.0,
+        "hospede": {
+            "id": 14,
+            "nome": "marcos andrade",
+            "documento": "999999",
+            "telefone": "000000000"
+        }
+    },
+    {
+        "codigo": 21,
+        "dataEntrada": "2001-07-04T12:08:56.000+00:00",
+        "dataSaida": "2001-07-12T12:20:56.000+00:00",
+        "adicionarVeiculos": false,
+        "conta": 1020.0,
+        "hospede": {
+            "id": 20,
+            "nome": "goku severino",
+            "documento": "343434",
+            "telefone": "564738493"
+        }
+    },
+    {
+        "codigo": 23,
+        "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+        "dataSaida": "2001-07-30T12:20:56.000+00:00",
+        "adicionarVeiculos": true,
+        "conta": 1625.0,
+        "hospede": {
+            "id": 22,
+            "nome": "Sandra Paula",
+            "documento": "234564",
+            "telefone": "8199344444"
+        }
+    }
+]
+````
+
+agora vamos usar o verbo PUT para alterar o dia de saida de sandra e tirar o carro da garagem :
+
+````
+GET http://localhost:8080/checkin/23
+
+
+{
+    "codigo": 23,
+    "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+    "dataSaida": "2001-07-30T12:20:56.000+00:00",
+    "adicionarVeiculos": true,
+    "conta": 1625.0,
+    "hospede": {
+        "id": 22,
+        "nome": "Sandra Paula",
+        "documento": "234564",
+        "telefone": "8199344444"
+    }
+}
+
+PUT http://localhost:8080/checkin/23
+
+{
+    
+    "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+    "dataSaida": "2001-07-31T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1020.0,
+    "hospede": {
+        "id": 22
+        
+    }
+}
+
+GET http://localhost:8080/checkin/23
+
+{
+    "codigo": 23,
+    "dataEntrada": "2001-07-19T12:08:56.000+00:00",
+    "dataSaida": "2001-07-31T12:20:56.000+00:00",
+    "adicionarVeiculos": false,
+    "conta": 1560.0,
+    "hospede": {
+        "id": 22,
+        "nome": "Sandra Paula",
+        "documento": "234564",
+        "telefone": "8199344444"
+    }
+}
+
 ````
  
