@@ -38,3 +38,42 @@ Regras de negócio
 sendo R$15,00 de segunda à sexta e R$20,00 nos finais de semana;
 ● Caso o horário da saída seja após às 16:30h deve ser cobrada uma diária extra
 
+## Solução
+ Irei mostrar primeiro  os verbos da api dos hospedes...
+ o primeiro foi o GET e foi usado pra listar todos do Hotel e buscar por id,nome,documento e telefone...
+ 
+ Listando todos os Clientes do Hotel:
+ 
+ ````
+GET http://localhost:8080/hospedes
+
+
+[
+    {
+        "id": 14,
+        "nome": "marcos andrade",
+        "documento": "999999",
+        "telefone": "8364738993"
+    },
+    {
+        "id": 15,
+        "nome": "lucas simao",
+        "documento": "333333",
+        "telefone": "8475649377"
+    },
+    {
+        "id": 16,
+        "nome": "leticia andrade",
+        "documento": "222222",
+        "telefone": "908466378"
+    },
+    {
+        "id": 20,
+        "nome": "goku severino",
+        "documento": "343434",
+        "telefone": "564738493"
+    }
+]
+
+````
+ 
